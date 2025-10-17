@@ -12,9 +12,7 @@ public class ValidarCamposPreenchidosImpl implements IValidacao {
     @Override
     public void validar(TransacaoDTO transacao) {
         if(transacao.value() == null || transacao.dataHour() == null) {
-            throw new CamposInvalidosException("""
-                    Campos de valor ou data e hora não preenchidos corretamente.
-                    """);
+            throw new CamposInvalidosException("Campos de valor ou data e hora não preenchidos corretamente.");
         }
     }
 }

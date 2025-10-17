@@ -19,7 +19,7 @@ public class TransacaoController {
     private TransacaoService service;
 
     @PostMapping
-    private void save(@RequestBody @Valid TransacaoDTO transacao) {
-        System.out.println(transacao);
+    public void save(@RequestBody @Valid TransacaoDTO transacao) {
+        service.save(transacao);
     }
 }

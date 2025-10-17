@@ -11,11 +11,11 @@ import java.time.OffsetDateTime;
 public class ValidarDataHoraFuturoImpl implements IValidacao {
 
     @Override
-    public void validar(TransacaoDTO transacao) {
-        Boolean isAfter = transacao.dataHour().isAfter(OffsetDateTime.now());
+    public void validar(TransacaoDTO request) {
+        boolean ehDepois = request.dataHour().isAfter(OffsetDateTime.now());
 
-        if (isAfter) {
-            throw new TransacaoFuturoException("Essa transação não pode ser realizada");
+        if (ehDepois) {
+            throw new TransacaoFuturoException("Valor do campo dataHora está no futuro!");
         }
     }
 }

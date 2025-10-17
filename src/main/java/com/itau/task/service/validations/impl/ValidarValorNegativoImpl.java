@@ -9,12 +9,11 @@ import org.springframework.stereotype.Component;
 public class ValidarValorNegativoImpl implements IValidacao {
 
     @Override
-    public void validar(TransacaoDTO transacao) {
+    public void validar(TransacaoDTO request) {
+        boolean ehNumeroNegativo = request.value() < 0;
 
-        Boolean isNegative = transacao.value() < 0;
-
-        if (isNegative) {
-            throw new ValorNegativoException("A transação mínima é de R$1,00.");
+        if (ehNumeroNegativo) {
+            throw new ValorNegativoException("Não é permitido valor negativo!");
         }
     }
 }
